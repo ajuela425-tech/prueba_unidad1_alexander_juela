@@ -5,7 +5,7 @@ class VistaOperaciones:
         print("MENU")
         print("1. Registrar plato")
         print("2. Mostrar platos")
-        print("3. Servir platos")
+        print("3. Servir platos") 
         print("4. Salir\n")
         return input("Seleccione una opcion: \n")
 
