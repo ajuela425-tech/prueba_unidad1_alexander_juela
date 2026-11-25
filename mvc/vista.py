@@ -9,7 +9,7 @@ class VistaOperaciones:
         print("4. Salir\n")
         return input("Seleccione una opcion: \n")
 
-    def pedir_nombre(self):
+    def pedir_nombre(self): 
         return input("Nombre: ")
 
     def pedir_precio(self):

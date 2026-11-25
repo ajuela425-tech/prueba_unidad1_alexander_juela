@@ -43,15 +43,29 @@ class ControladorRestaurante:
 
             if opcion == "1":
                 nombre_raw = self.vista.pedir_nombre()
-                precio_raw = self.vista.pedir_precio()
-                porciones_raw = self.vista.pedir_porciones()
-
                 try:
                     nombre = self._parsear_nombre(nombre_raw)
+                except ValueError as error:
+                    self._mostrar_error(str(error))
+                    continue
+
+                precio_raw = self.vista.pedir_precio()
+                try:
                     precio = self._parsear_precio(precio_raw)
+                except ValueError as error:
+                    self._mostrar_error(str(error))
+                    continue
+
+                porciones_raw = self.vista.pedir_porciones()
+                try:
                     porciones = self._parsear_entero_positivo(
                         porciones_raw, "porciones_invalidas", permitir_cero=True
                     )
+                except ValueError as error:
+                    self._mostrar_error(str(error))
+                    continue
+
+                try:
                     plato = self.modelo.registrar_plato(nombre, precio, porciones)
                 except ValueError as error:
                     self._mostrar_error(str(error))
@@ -93,7 +107,12 @@ class ControladorRestaurante:
                     self._mostrar_error("porciones_insuficientes")
                     continue
 
-                servido = self.modelo.servir_plato(plato, cantidad)
+                try:
+                    servido = self.modelo.servir_plato(plato, cantidad)
+                except ValueError as error:
+                    self._mostrar_error(str(error))
+                    continue
+
                 if servido is None:
                     self._mostrar_error("porciones_insuficientes")
                     continue

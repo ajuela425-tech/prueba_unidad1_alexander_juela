@@ -4,7 +4,7 @@ class Plato:
         self.nombre = nombre
         self.precio = precio
         self.porciones = porciones
-
+ 
     def puede_servir(self, cantidad):
         return 0 < cantidad <= self.porciones
 
