@@ -29,7 +29,7 @@ class Restaurante:
             Plato(1, "Mote pillo", 3.50, 30),
             Plato(2, "Hornado", 6.00, 20),
         ] 
-
+ 
     @staticmethod
     def validar_nombre(nombre):
         if not nombre.strip():
