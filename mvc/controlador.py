@@ -75,7 +75,7 @@ class ControladorRestaurante:
 
             elif opcion == "2":
                 if not self.modelo.platos:
-                    self._mostrar_error("sin_platos")
+                    self._mostrar_error("sin platos")
                 else:
                     self.vista.mostrar_platos(self.modelo.platos)
 
@@ -83,7 +83,7 @@ class ControladorRestaurante:
                 codigo_raw = self.vista.pedir_codigo()
                 try:
                     codigo = self._parsear_entero_positivo(
-                        codigo_raw, "codigo_no_encontrado", permitir_cero=False
+                        codigo_raw, "codigo no encontrado", permitir_cero=False
                     )
                 except ValueError as error:
                     self._mostrar_error(str(error))
@@ -91,20 +91,20 @@ class ControladorRestaurante:
 
                 plato = self.modelo.buscar_plato(codigo)
                 if plato is None:
-                    self._mostrar_error("codigo_no_encontrado")
+                    self._mostrar_error("codigo no encontrado")
                     continue
 
                 cantidad_raw = self.vista.pedir_cantidad()
                 try:
                     cantidad = self._parsear_entero_positivo(
-                        cantidad_raw, "cantidad_invalida", permitir_cero=False
+                        cantidad_raw, "cantidad invalida", permitir_cero=False
                     )
                 except ValueError as error:
                     self._mostrar_error(str(error))
                     continue
 
                 if not plato.puede_servir(cantidad):
-                    self._mostrar_error("porciones_insuficientes")
+                    self._mostrar_error("porciones insuficientes")
                     continue
 
                 try:
