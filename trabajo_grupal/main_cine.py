@@ -1,3 +1,4 @@
+#Alexander Juela y Andersson Bermejo
 from controlador_cine import ControladorCine
 from modelo_cine import Cine
 from vista_cine import VistaCine
